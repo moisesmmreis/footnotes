@@ -30,13 +30,14 @@ function footnotes_add_links($content)
 
     // Display the references
     if (!empty($references)) {
-        $output = '<hr><h3 class="capitalize font-display text-4xl font-black mb-6 after:block after:h-[6px] after:mt-2 after:w-full after:border-t after:border-b">Nossas fontes</h3><ol>';
+        $output = '<h3 class="capitalize font-display text-4xl font-black mb-6 after:block after:h-[6px] after:mt-2 after:w-full after:border-t after:border-b">Nossas fontes</h3><ol>';
         foreach ($references as $id => $reference) {
-            $output .= '<li class="" id="ref-' . $id . '">';
-            $output .= '<a class="underline-none text-blue-600 max-h-fit !pr-6" href="#sup-' . $id . '">';
+            $output .= '<li style="list-style-type:lower-roman" id="ref-' . $id . '">';
+            // TASK: Separate it from the reference itself. Leave it near the marker
+            $output .= '<a style="margin-right:1rem" class="text-blue-600 underline" href="#sup-' . $id . '">';
             $output .= '&uarr;';
             $output .= '</a>';
-            $output .= '<span>' . $reference . '</span>';
+            $output .= '<span class="!text-foreground/80">' . $reference . '</span>';
             $output .= '</li>';
         }
         $output .= '</ol>';
